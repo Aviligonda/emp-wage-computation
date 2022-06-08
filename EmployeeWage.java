@@ -1,8 +1,9 @@
 public class EmployeeWage {
     public static final int wagePerHr = 20;
+    public static final int totalWorkingDays = 20;
 
     public static void main(String[] args) {
-        int dailyWage, empHr = 0;
+        int dailyWage, empHr = 0, monthlyWage;
         System.out.println("Welcome to Employee Wage Computation Program");
         int check = (int) (Math.random() * 3);
         switch (check) {
@@ -21,5 +22,7 @@ public class EmployeeWage {
         }
         dailyWage = empHr * wagePerHr;
         System.out.println("Daily wage is :" + dailyWage);
+        monthlyWage = dailyWage * totalWorkingDays;
+        System.out.println("Monthly wage is :" + monthlyWage);
     }
 }
