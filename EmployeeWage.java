@@ -4,6 +4,11 @@ public class EmployeeWage {
     public static final int totalWorkingHr = 100;
 
     public static void main(String[] args) {
+        EmployeeWage employeeWage = new EmployeeWage();
+        employeeWage.calWage();
+    }
+
+    public void calWage() {
         int dailyWage, empHr = 0, monthlyWage = 0, maxWorkingDays = 0, maxWorkingHr = 0;
         System.out.println("Welcome to Employee Wage Computation Program");
         while (maxWorkingHr <= totalWorkingHr && maxWorkingDays < totalWorkingDays) {
@@ -30,5 +35,7 @@ public class EmployeeWage {
         }
         int totalEmpWage = maxWorkingHr * wagePerHr;
         System.out.println("Total employee wage is :" + totalEmpWage);
+
     }
+
 }
