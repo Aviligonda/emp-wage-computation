@@ -1,4 +1,4 @@
-public class EmployeeWage {
+public class EmployeeWage implements InterfaceCompanyWage {
     //   public static CompanyEmployeeWage1 companyEmployeeWage;
     int numberOfCompanies = 0;
     CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];

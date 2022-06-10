@@ -1,30 +1,38 @@
-public class CompanyEmployeeWage {
-    String companyName;
-    int totalWorkingHr;
-    int totalWorkingDays;
-    int wagePerHr;
-    int totalEmployeeWage;
+interface InterfaceCompanyWage {
+    public abstract void addCompanyEmpWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr);
 
-    public CompanyEmployeeWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
-        this.companyName = companyName;
-        this.totalWorkingHr = totalWorkingHr;
-        this.totalWorkingDays = totalWorkingDays;
-        this.wagePerHr = wagePerHr;
-    }
+    public abstract void calWageComputation();
 
-    public int getTotalEmployeeWage() {
-        return totalEmployeeWage;
-    }
 
-    public void setTotalEmployeeWage(int totalEmployeeWage) {
-        this.totalEmployeeWage = totalEmployeeWage;
-    }
+    public class CompanyEmployeeWage {
+        String companyName;
+        int totalWorkingHr;
+        int totalWorkingDays;
+        int wagePerHr;
+        int totalEmployeeWage;
 
-    @Override
-    public String toString() {
-        return "CompanyEmployeeWage{" +
-                "companyName='" + companyName + '\'' +
-                ", totalEmployeeWage=" + totalEmployeeWage +
-                '}';
+        public CompanyEmployeeWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
+            this.companyName = companyName;
+            this.totalWorkingHr = totalWorkingHr;
+            this.totalWorkingDays = totalWorkingDays;
+            this.wagePerHr = wagePerHr;
+            this.totalEmployeeWage = totalEmployeeWage;
+        }
+
+        public int getTotalEmployeeWage() {
+            return totalEmployeeWage;
+        }
+
+        public void setTotalEmployeeWage(int totalEmployeeWage) {
+            this.totalEmployeeWage = totalEmployeeWage;
+        }
+
+        @Override
+        public String toString() {
+            return "CompanyEmployeeWage{" +
+                    "companyName='" + companyName + '\'' +
+                    ", totalEmployeeWage=" + totalEmployeeWage +
+                    '}';
+        }
     }
 }
