@@ -1,39 +1,33 @@
 public class EmployeeWage {
-    public final String company;
-    public final int wagePerHr;
-    public final int totalWorkingHr;
-    public final int totalWorkingDays;
-
-    public EmployeeWage(String company, int wagePerHr, int totalWorkingHr, int totalWorkingDays) {
-        this.company = company;
-        this.wagePerHr = wagePerHr;
-        this.totalWorkingHr = totalWorkingHr;
-        this.totalWorkingDays = totalWorkingDays;
-    }
+    //   public static CompanyEmployeeWage1 companyEmployeeWage;
+    int numberOfCompanies = 0;
+    CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];
 
     public static void main(String[] args) {
-        EmployeeWage tcs = new EmployeeWage("TCS", 20, 20, 100);
-        EmployeeWage info = new EmployeeWage("INFO", 25, 30, 90);
-        tcs.calWageComputation();
-        System.out.println(tcs);
-        info.calWageComputation();
-        System.out.println(info);
+        EmployeeWage employeeWage = new EmployeeWage();
+        employeeWage.addCompanyEmpWage("jio", 100, 30, 25);
+        employeeWage.addCompanyEmpWage("Airtel", 90, 25, 30);
+        employeeWage.calWageComputation();
     }
 
-    @Override
-    public String toString() {
-        return "EmployeeWage{" +
-                "company='" + company + '\'' +
-                ", wagePerHr=" + wagePerHr +
-                ", totalWorkingHr=" + totalWorkingHr +
-                ", totalWorkingDays=" + totalWorkingDays +
-                '}';
+    public void addCompanyEmpWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
+        companyEmployeeWagesArray[numberOfCompanies] = new CompanyEmployeeWage(companyName, totalWorkingHr, totalWorkingDays, wagePerHr);
+        numberOfCompanies++;
     }
 
     public void calWageComputation() {
-        int empHr, maxWorkingDays = 0, maxWorkingHr = 0;
+        for (int i = 0; i < numberOfCompanies; i++) {
+            companyEmployeeWagesArray[i].setTotalEmployeeWage(this.calWageComputation(companyEmployeeWagesArray[i]));
+            System.out.println(companyEmployeeWagesArray[i]);
+        }
+    }
+
+
+    public int calWageComputation(CompanyEmployeeWage companyEmployeeWage) {
+        int empHr = 0, maxWorkingDays = 0, maxWorkingHr = 0;
         System.out.println("Welcome to Employee Wage Computation Program");
-        while (maxWorkingHr <= totalWorkingHr && maxWorkingDays < totalWorkingDays) {
+
+        while (maxWorkingHr <= companyEmployeeWage.totalWorkingHr && maxWorkingDays < companyEmployeeWage.totalWorkingDays) {
             maxWorkingDays++;
             int check = (int) (Math.random() * 3);
             switch (check) {
@@ -50,10 +44,12 @@ public class EmployeeWage {
 
             maxWorkingHr += empHr;
 
+
+            int empWage = maxWorkingHr * companyEmployeeWage.wagePerHr;
+            companyEmployeeWage.totalEmployeeWage = companyEmployeeWage.totalEmployeeWage + empWage;
+//        System.out.println( companyEmployeeWage.companyName +" --> Company Total Employee wage is :" + totalEmpWage);
         }
-        int totalEmpWage = maxWorkingHr * wagePerHr;
-        System.out.println(company + " --> Company Total Employee wage is :" + totalEmpWage);
+        return companyEmployeeWage.totalEmployeeWage;
     }
-
-
 }
+
