@@ -11,6 +11,7 @@ public class EmployeeWage implements InterfaceCompanyWage {
         employeeWage.addCompanyEmpWage("jio", 100, 30, 25);
         employeeWage.addCompanyEmpWage("Airtel", 90, 25, 30);
         employeeWage.calWageComputation();
+        employeeWage.getTotalWage("jio");
 
     }
 
@@ -58,5 +59,20 @@ public class EmployeeWage implements InterfaceCompanyWage {
 
         return companyEmployeeWage.totalEmployeeWage;
     }
+
+    public void getTotalWage(String companyName) {
+        for (int i = 0; i < companyEmployeeWagesArray.size(); i++) {
+            String name = companyEmployeeWagesArray.get(i).companyName;
+            if (name.equals(companyName)) {
+                int totalWage = companyEmployeeWagesArray.get(i).totalEmployeeWage;
+                System.out.println(companyName + " Total Employee Wage is :" + totalWage);
+                break;
+            } else {
+                continue;
+            }
+        }
+    }
+
+
 }
 

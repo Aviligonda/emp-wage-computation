@@ -2,6 +2,7 @@ interface InterfaceCompanyWage {
     public abstract void addCompanyEmpWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr);
 
     public abstract void calWageComputation();
+    public abstract void getTotalWage(String companyName);
 
 
     public class CompanyEmployeeWage {
