@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class EmployeeWage implements InterfaceCompanyWage {
+    //    CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];
+    static ArrayList<CompanyEmployeeWage> companyEmployeeWagesArray = new ArrayList<CompanyEmployeeWage>();
     //   public static CompanyEmployeeWage1 companyEmployeeWage;
     int numberOfCompanies = 0;
-//    CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];
-    static ArrayList<CompanyEmployeeWage>companyEmployeeWagesArray=new ArrayList<CompanyEmployeeWage>();
 
-    public static    void main(String[] args) {
+    public static void main(String[] args) {
         InterfaceCompanyWage employeeWage = new EmployeeWage();
         employeeWage.addCompanyEmpWage("jio", 100, 30, 25);
         employeeWage.addCompanyEmpWage("Airtel", 90, 25, 30);
@@ -15,14 +15,14 @@ public class EmployeeWage implements InterfaceCompanyWage {
     }
 
     public void addCompanyEmpWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
-       CompanyEmployeeWage companyEmployeeWage=new CompanyEmployeeWage(companyName,totalWorkingHr,totalWorkingDays,wagePerHr);
-       companyEmployeeWagesArray.add(companyEmployeeWage);
+        CompanyEmployeeWage companyEmployeeWage = new CompanyEmployeeWage(companyName, totalWorkingHr, totalWorkingDays, wagePerHr);
+        companyEmployeeWagesArray.add(companyEmployeeWage);
     }
 
     public void calWageComputation() {
         for (int i = 0; i < companyEmployeeWagesArray.size(); i++) {
-CompanyEmployeeWage companyEmployeeWage= companyEmployeeWagesArray.get(i);
-companyEmployeeWage.setTotalEmployeeWage(this.calWageComputation(companyEmployeeWage));
+            CompanyEmployeeWage companyEmployeeWage = companyEmployeeWagesArray.get(i);
+            companyEmployeeWage.setTotalEmployeeWage(this.calWageComputation(companyEmployeeWage));
             System.out.println(companyEmployeeWage);
         }
     }
@@ -51,9 +51,11 @@ companyEmployeeWage.setTotalEmployeeWage(this.calWageComputation(companyEmployee
 
 
             int empWage = maxWorkingHr * companyEmployeeWage.wagePerHr;
+            System.out.println(companyEmployeeWage.companyName + "  Day#" + maxWorkingDays + " Employee wge " + empWage);
             companyEmployeeWage.totalEmployeeWage = companyEmployeeWage.totalEmployeeWage + empWage;
-//        System.out.println( companyEmployeeWage.companyName +" --> Company Total Employee wage is :" + totalEmpWage);
+
         }
+
         return companyEmployeeWage.totalEmployeeWage;
     }
 }
