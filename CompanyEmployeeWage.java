@@ -5,10 +5,10 @@ interface InterfaceCompanyWage {
 
 
     public class CompanyEmployeeWage {
-        String companyName;
-        int totalWorkingHr;
-        int totalWorkingDays;
-        int wagePerHr;
+        final String companyName;
+        final int totalWorkingHr;
+        final int totalWorkingDays;
+        final int wagePerHr;
         int totalEmployeeWage;
 
         public CompanyEmployeeWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
@@ -16,7 +16,6 @@ interface InterfaceCompanyWage {
             this.totalWorkingHr = totalWorkingHr;
             this.totalWorkingDays = totalWorkingDays;
             this.wagePerHr = wagePerHr;
-            this.totalEmployeeWage = totalEmployeeWage;
         }
 
         public int getTotalEmployeeWage() {

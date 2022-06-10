@@ -1,24 +1,29 @@
+import java.util.ArrayList;
+
 public class EmployeeWage implements InterfaceCompanyWage {
     //   public static CompanyEmployeeWage1 companyEmployeeWage;
     int numberOfCompanies = 0;
-    CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];
+//    CompanyEmployeeWage[] companyEmployeeWagesArray = new CompanyEmployeeWage[5];
+    static ArrayList<CompanyEmployeeWage>companyEmployeeWagesArray=new ArrayList<CompanyEmployeeWage>();
 
-    public static void main(String[] args) {
-        EmployeeWage employeeWage = new EmployeeWage();
+    public static    void main(String[] args) {
+        InterfaceCompanyWage employeeWage = new EmployeeWage();
         employeeWage.addCompanyEmpWage("jio", 100, 30, 25);
         employeeWage.addCompanyEmpWage("Airtel", 90, 25, 30);
         employeeWage.calWageComputation();
+
     }
 
     public void addCompanyEmpWage(String companyName, int totalWorkingHr, int totalWorkingDays, int wagePerHr) {
-        companyEmployeeWagesArray[numberOfCompanies] = new CompanyEmployeeWage(companyName, totalWorkingHr, totalWorkingDays, wagePerHr);
-        numberOfCompanies++;
+       CompanyEmployeeWage companyEmployeeWage=new CompanyEmployeeWage(companyName,totalWorkingHr,totalWorkingDays,wagePerHr);
+       companyEmployeeWagesArray.add(companyEmployeeWage);
     }
 
     public void calWageComputation() {
-        for (int i = 0; i < numberOfCompanies; i++) {
-            companyEmployeeWagesArray[i].setTotalEmployeeWage(this.calWageComputation(companyEmployeeWagesArray[i]));
-            System.out.println(companyEmployeeWagesArray[i]);
+        for (int i = 0; i < companyEmployeeWagesArray.size(); i++) {
+CompanyEmployeeWage companyEmployeeWage= companyEmployeeWagesArray.get(i);
+companyEmployeeWage.setTotalEmployeeWage(this.calWageComputation(companyEmployeeWage));
+            System.out.println(companyEmployeeWage);
         }
     }
 
