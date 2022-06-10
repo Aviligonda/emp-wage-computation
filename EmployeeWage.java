@@ -1,16 +1,36 @@
 public class EmployeeWage {
+    public final String company;
+    public final int wagePerHr;
+    public final int totalWorkingHr;
+    public final int totalWorkingDays;
 
-    public static void main(String[] args) {
-        EmployeeWage employeeWage = new EmployeeWage();
-        employeeWage.calWageComputation("TCS", 20, 20, 100);
-        System.out.println("---------------------------------------------------------------------------");
-        employeeWage.calWageComputation("Info", 25, 25, 90);
-        System.out.println("---------------------------------------------------------------------------");
-        employeeWage.calWageComputation("TATA", 30, 31, 110);
-
+    public EmployeeWage(String company, int wagePerHr, int totalWorkingHr, int totalWorkingDays) {
+        this.company = company;
+        this.wagePerHr = wagePerHr;
+        this.totalWorkingHr = totalWorkingHr;
+        this.totalWorkingDays = totalWorkingDays;
     }
 
-    public void calWageComputation(String company, int wagePerHr, int totalWorkingDays, int totalWorkingHr) {
+    public static void main(String[] args) {
+        EmployeeWage tcs = new EmployeeWage("TCS", 20, 20, 100);
+        EmployeeWage info = new EmployeeWage("INFO", 25, 30, 90);
+        tcs.calWageComputation();
+        System.out.println(tcs);
+        info.calWageComputation();
+        System.out.println(info);
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "company='" + company + '\'' +
+                ", wagePerHr=" + wagePerHr +
+                ", totalWorkingHr=" + totalWorkingHr +
+                ", totalWorkingDays=" + totalWorkingDays +
+                '}';
+    }
+
+    public void calWageComputation() {
         int empHr, maxWorkingDays = 0, maxWorkingHr = 0;
         System.out.println("Welcome to Employee Wage Computation Program");
         while (maxWorkingHr <= totalWorkingHr && maxWorkingDays < totalWorkingDays) {
@@ -34,4 +54,6 @@ public class EmployeeWage {
         int totalEmpWage = maxWorkingHr * wagePerHr;
         System.out.println(company + " --> Company Total Employee wage is :" + totalEmpWage);
     }
+
+
 }
